@@ -1,0 +1,371 @@
+/* ============================================
+   VARIABLES CSS - COLORES Y PROPIEDADES BASE
+   ============================================ */
+:root {
+  --color-primary: #1e3a8a;
+  --color-secondary: #3b82f6;
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-text-principal: #1f2937;
+  --color-text-secundario: #6b7280;
+  --color-bg-light: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-white: #ffffff;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+}
+
+/* ============================================
+   ESTILOS BASE Y GLOBALES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  color: var(--color-text-principal);
+  background-color: var(--color-bg-light);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-secondary);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+header h1 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+dl {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+dl li {
+  list-style: none;
+}
+
+dl a {
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+dl a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+.main-page {
+  margin-top: var(--spacing-xl);
+}
+
+section {
+  margin-bottom: var(--spacing-xl);
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+section h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-lg);
+}
+
+section > p {
+  color: var(--color-text-secundario);
+  margin-bottom: var(--spacing-md);
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+}
+
+/* ============================================
+   TABLA DE DIVISAS
+   ============================================ */
+.tabla-divisas {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: var(--spacing-md);
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.tabla-divisas thead {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.tabla-divisas th {
+  padding: var(--spacing-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: var(--font-size-sm);
+}
+
+.tabla-divisas tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.3s ease;
+}
+
+.tabla-divisas tbody tr:hover {
+  background-color: var(--color-bg-light);
+}
+
+.tabla-divisas td {
+  padding: var(--spacing-md);
+  color: var(--color-text-principal);
+  font-size: var(--font-size-base);
+}
+
+.tabla-divisas tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* ============================================
+   SECCIÓN DE ACTUALIZACIONES
+   ============================================ */
+#ultima-actualizacion {
+  margin-top: var(--spacing-xl);
+}
+
+#ultima-actualizacion article {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  background: var(--color-bg-light);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-accent);
+  transition: all 0.3s ease;
+}
+
+#ultima-actualizacion article:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+#ultima-actualizacion img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.etiqueta-valor {
+  background: linear-gradient(135deg, var(--color-accent), #f97316);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   FORMULARIO DE CONVERSIÓN
+   ============================================ */
+.conversion-divisas {
+  max-width: 400px;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-white), var(--color-bg-light));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+#titulo-formulario {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  font-style: normal;
+}
+
+.conversion-divisas label {
+  display: block;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-principal);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+#divisa,
+#valor {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
+  background-color: var(--color-white);
+}
+
+#divisa:focus,
+#valor:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+#valor::placeholder {
+  color: var(--color-text-secundario);
+}
+
+#boton-convertir {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#boton-convertir:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+#boton-convertir:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  #root {
+    padding: var(--spacing-md);
+  }
+  
+  header {
+    padding: var(--spacing-md);
+  }
+  
+  header h1 {
+    font-size: var(--font-size-lg);
+  }
+  
+  section {
+    padding: var(--spacing-md);
+  }
+  
+  .tabla-divisas {
+    font-size: var(--font-size-sm);
+  }
+  
+  .tabla-divisas th,
+  .tabla-divisas td {
+    padding: var(--spacing-sm);
+  }
+  
+  dl {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  #ultima-actualizacion article {
+    flex-direction: column;
+    text-align: center;
+    margin: var(--spacing-md) 0;
+  }
+  
+  .conversion-divisas {
+    max-width: 100%;
+  }
+}
+

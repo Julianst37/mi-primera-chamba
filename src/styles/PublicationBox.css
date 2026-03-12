@@ -1,0 +1,185 @@
+.publication-container {
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+}
+
+.publication-input-section {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.publication-input-section:hover{
+  box-shadow: blue ;
+  border-color: blue;
+}
+
+.publication-textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+  font-family: nunito, sans-serif;
+  resize: none;
+  outline: none;
+  color: black;
+}
+
+.publication-textarea::placeholder {
+  color: var(--color-text-secundario);
+}
+
+.publication-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: black;
+  border-top: 1px solid var(--color-border);
+}
+
+.character-count {
+  display: flex;
+  align-items: center;
+}
+
+.count-text {
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.count-text.count-error {
+  color: #ef4444;
+}
+
+.btn-publicar {
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-publicar:disabled {
+  background-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.no-publications {
+  text-align: center;
+  color: gray;
+  padding: 20px 20px;
+  font-style: italic;
+}
+
+.publication-card {
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: rgb(255 250 250);
+  transition: all 0.3s ease;
+}
+
+.publication-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.publication-date {
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-eliminar{
+    border-radius: 4px;
+    padding: 2px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: #9d2828;
+}
+
+.publication-user-info {
+  padding: 10px 20px;
+}
+
+.publication-footer-actions{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+        background-color: aliceblue;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn-like{
+   cursor: pointer;
+   color: blue;
+   font-size: 18px;   
+}
+
+ .btn-like:hover {
+  color: darkblue;
+ }
+
+ .reacciones-contador{
+    font-weight: bold;
+ }
+
+ .publication-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+ }
+
+ .publication-text{
+   word-wrap: break-word;
+ }
+
+ .publication-content {
+  display: flex;
+  gap: 20px;
+ }
+
+ .btn-like.animating {
+  animation: likeAnimation 0.5s ease-out;
+ }
+
+.btn-like:active .like-icon {
+  animation: likePop 0.5s ease;
+}
+
+@keyframes likePop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.4) rotate(-10deg);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

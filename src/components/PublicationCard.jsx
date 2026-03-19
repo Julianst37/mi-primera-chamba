@@ -1,3 +1,6 @@
+import PublicationAvatar from './PublicationAvatar'
+import PublicationActions from './PublicationActions'
+
 export default function PublicationCard({ 
   pub, 
   onDelete, 
@@ -14,23 +17,15 @@ export default function PublicationCard({
           </a>
         </div>
         <div className="publication-content">
-          <div className="publication-avatar-container">
-            <img className="publication-avatar" alt="Avatar usuario"
-              src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-            </img>
-            <p style={{fontWeight: 'bold'}}>{pub.usuario}</p>
-          </div>
+          <PublicationAvatar usuario={pub.usuario} />
           <p className="publication-text">{pub.contenido}</p>
         </div>
       </div>
-      <div className="publication-footer-actions">
-         <div className="publication-actions">
-            <a className="btn-like" title="Me gusta" onClick={() => onLike(pub.id)}>
-              <i className="fa-solid fa-thumbs-up like-icon"></i>
-            </a>
-        </div>
-        <span className="reacciones-contador">Reacciones: {reacciones[pub.id] || 0}</span>
-       </div>   
+      <PublicationActions
+        id={pub.id}
+        onLike={onLike}
+        reacciones={reacciones}
+      />
     </div>
   )
 }

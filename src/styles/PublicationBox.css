@@ -1,5 +1,4 @@
 .publication-container {
-  max-width: 600px;
   padding: 20px;
   background-color: white;
   border-radius: 10px;
@@ -39,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md);
-  background-color: black;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   border-top: 1px solid var(--color-border);
 }
 
@@ -60,8 +59,8 @@
 
 .btn-publicar {
   padding: 10px 20px;
-  background-color: blue;
-  color: white;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
   border-radius: 4px;
   font-size: 12px;

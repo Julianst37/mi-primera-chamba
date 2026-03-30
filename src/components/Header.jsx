@@ -1,20 +1,34 @@
+import { NavLink } from 'react-router-dom'
+
 function Header() {
   const menuItems = [
-    { id: 1, label: 'Histórico valores', href: '#historico-valores' },
-    { id: 2, label: 'Última actualización', href: '#ultima-actualizacion' },
-    { id: 3, label: 'Convertir divisas', href: '#convertir-divisas' },
+    { to: '/', label: 'Inicio' },
+    { to: '/historico', label: 'Histórico valores' },
+    { to: '/actualizaciones', label: 'Última actualización' },
+    { to: '/divisas', label: 'Convertir divisas' },
+    { to: '/publicaciones', label: 'Publicaciones' },
   ];
 
   return (
     <header>
-      <h1>Bitcoin Dashboard</h1>
-      <dl>
-        {menuItems.map((item) => (
-          <li key={item.id}>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
-      </dl>
+      <p className='header-title'>Bitcoin Dashboard</p>
+      <nav>
+        <dl className="navbar-links">
+          {menuItems.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  `navbar-link${isActive ? ' navbar-link--active' : ''}`
+                }
+              >
+              <span className="navbar-link-label">{label}</span>
+              </NavLink>
+            </li>
+          ))}
+        </dl>
+      </nav>
     </header>
   );
 }

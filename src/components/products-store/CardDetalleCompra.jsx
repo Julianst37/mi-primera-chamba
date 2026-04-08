@@ -4,7 +4,7 @@ import { CarritoContext } from "./CarritoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CardDetalleCompra({ producto }) {
-    const { eliminarDelCarrito, actualizarCantidad } = useContext(CarritoContext);
+    const {  eliminarDelCarrito, actualizarCantidad } = useContext(CarritoContext);
 
     return( 
         <div className="card-detalle-compra">

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { CarritoContext } from "./CarritoContext";
+import BotonAgregarCarrito from "./BotonAgregarCarrito";
 
 function CardProductos({ producto }) {
 
@@ -19,7 +18,7 @@ function CardProductos({ producto }) {
         <Link to={`/products/${producto.id}`} className="enlace-detalles" style={{fontWeight: "bold"}}>
             Ver más
         </Link>
-        <button className="boton-agregar" onClick={() => agregarAlCarrito(producto)}>Agregar al carrito <FontAwesomeIcon icon={faCartShopping} /></button>
+       <BotonAgregarCarrito producto={producto} agregarAlCarrito={agregarAlCarrito} />
       </div>
     </div>
   );

@@ -1,87 +1,91 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Row, Col } from 'react-bootstrap';
-import useFetch from '../../utils/useFetch';
-import SelectBoostrap from '../../utils/SelectBoostrap';
-import { useState } from 'react';
-import React from 'react'
-import Select from 'react-select'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { TextField } from '@mui/material';
+import { useForm } from "react-hook-form";
+
 
 function FormularioCliente() {
-  
-  const { data: departments } = useFetch('https://api-colombia.com/api/v1/Department');
 
-  const [departmentId, setDepartmentId] = useState(null);
-
- const [selectedCity, setSelectedCity] = useState(null);
-
-    const handleCities = (value) => {
-    setSelectedCity(null);
-    setDepartmentId(value);
-  }
-
-  const { data: cities } = useFetch(departmentId ? `https://api-colombia.com/api/v1/Department/${departmentId}/cities` : null);
-
+  const { register, handleSubmit, formState: { errors } } = useForm({
+  mode: "onBlur"
+ });
 
 
   return (
-    <Form>
-      <Row>
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="name">
-            <Form.Label>Nombres</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" />
-          </Form.Group>
-        </Col>
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <Box sx={{ flexGrow: 1 }} autoComplete="off">
+      <Grid container rowSpacing={1} columnSpacing={2}>
+        <Grid size={4}>
+           <TextField 
+           id="name"
+           label="Nombres" 
+           variant="outlined" 
+           margin='normal' 
+           error={!!errors.name}
+           helperText={errors.name?.message}
+           required 
+           fullWidth 
+           sx={{
+            '& .MuiFormHelperText-root': {
+              marginLeft: 0
+            }          
+           }} 
+           {...register("name", { required: 'El campo Nombres es obligatorio' })} />
+        </Grid>
+        <Grid size={4}>
+           <TextField 
+           id="lastname" 
+           label="Apellidos" 
+           variant="outlined" 
+           margin='normal'
+           error={!!errors.lastname}
+           helperText={errors.lastname?.message}
+           required 
+           fullWidth 
+           sx={{
+            '& .MuiFormHelperText-root': {
+              marginLeft: 0
+            }          
+          }} 
+           {...register("lastname", { required: 'El campo Apellidos es obligatorio' })} />
+        </Grid>
+        <Grid size={4}>
+            <TextField id="email" 
+            label="Correo electrónico" 
+            variant="outlined" 
+            margin='normal' 
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            required 
+            fullWidth 
+            sx={{
+            '& .MuiFormHelperText-root': {
+              marginLeft: 0
+            }
+            }}
+            {...register("email", { required: 'El campo Correo electrónico es obligatorio' })} />
+        </Grid>
+        <Grid size={4}>
+            <TextField 
+            id="phone" 
+            label="Número de teléfono" 
+            variant="outlined" 
+            margin='normal' 
+            error={!!errors.phone}
+            helperText={errors.phone?.message}
+            required 
+            fullWidth 
+            sx={{
+            '& .MuiFormHelperText-root': {
+              marginLeft: 0
+            }
+            }}
 
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="lastname">
-            <Form.Label>Apellidos</Form.Label>
-            <Form.Control type="text" placeholder="Enter last name" />
-          </Form.Group>
-        </Col>
-
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-        </Col>
-      </Row>  
-
-      <Row>
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="department">
-            <Form.Label>Departamento</Form.Label>
-            <Select options={departments ? departments.sort((a, b) => a.name.localeCompare(b.name)).map(dept => ({ value: dept.id, label: dept.name })) : []} onChange={(selectedOption) => handleCities(selectedOption.value)} placeholder="Selecciona un departamento" />
-          </Form.Group>
-        </Col>
-
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="municipality">
-            <Form.Label>Municipio</Form.Label>
-            <Select value={selectedCity} options={cities ? cities.sort((a, b) => a.name.localeCompare(b.name)).map(city => ({ value: city.id, label: city.name })) : []} onChange={(selectedOption) => setSelectedCity(selectedOption)} placeholder="Selecciona un municipio" />
-          </Form.Group>
-        </Col>
-
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Dirección</Form.Label>
-            <Form.Control type="text" placeholder="Enter address" />
-          </Form.Group>
-        </Col>
-      </Row>
-
-      <Row> 
-        <Col md={4}>
-          <Form.Group className="mb-3" controlId="phone">
-            <Form.Label>Teléfono</Form.Label>
-            <Form.Control type="text" placeholder="Enter phone number" />
-          </Form.Group>
-        </Col>
-
-      </Row>
-    </Form>
+            {...register("phone", { required: 'El campo Número de teléfono es obligatorio' })} />
+        </Grid>
+      </Grid>
+    </Box>
+    </form>
   );
 }
 

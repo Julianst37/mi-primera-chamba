@@ -4,34 +4,25 @@ import TablaHistorico from './components/TablaHistorico'
 import SeccionActualizacion from './components/SeccionActualizacion'
 import FormularioConversion from './components/FormularioConversion'
 import PublicationBox from './components/PublicationBox'
-import ShoppingCart from './components/ShoppingCart'
 import Footer from './components/Footer'
 import Semaforo from './components/Semaforo'
 import ToDo from './components/ToDo'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NoEncontrado from './components/NoEncontrado'
-import NavBarCarrito from './components/products-store/NavBarCarrito'
-import Inicio from './components/products-store/inicio'
-import Catalogo from './components/products-store/Catalogo'
-import ProductoDetalle from './components/products-store/ProductoDetalle'
-import { CarritoProvider } from './components/products-store/CarritoContext'
-import DetalleCompra from './components/products-store/DetalleCompra'
 
 function App() {
   return (
-    <CarritoProvider>
-      <BrowserRouter>
-        <NavBarCarrito />
-        <Routes>
-          <Route path='/' element={<Inicio />} />
-          <Route path='/products' element={<Catalogo />} />
-          <Route path='/cart' element={<DetalleCompra />} />
-          <Route path='*' element={<NoEncontrado />} />
-          <Route path='/products/:id' element={<ProductoDetalle />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </CarritoProvider>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/historico" element={<TablaHistorico />} />
+        <Route path="/actualizaciones" element={<SeccionActualizacion />} />
+        <Route path="/divisas" element={<FormularioConversion />} />
+        <Route path="/publicaciones" element={<PublicationBox />} />
+        <Route path="*" element={<NoEncontrado />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   )
 }
 

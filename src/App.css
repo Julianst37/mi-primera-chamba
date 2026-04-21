@@ -975,6 +975,7 @@ header{
     border-radius: 8px;
     border-left-color: blueviolet;
     border-left-width: 5px;
+    margin-bottom: 20px;
 }
 
 .valor-movimiento{

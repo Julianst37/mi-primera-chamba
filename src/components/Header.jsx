@@ -7,6 +7,7 @@ function Header() {
     { to: '/actualizaciones', label: 'Última actualización' },
     { to: '/divisas', label: 'Convertir divisas' },
     { to: '/publicaciones', label: 'Publicaciones' },
+    { to: '/compraBTC', label: 'Comprar BTC' },
   ];
 
   return (

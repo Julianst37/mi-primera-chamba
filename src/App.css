@@ -835,3 +835,149 @@ header{
     outline: none;
     background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #6A11CB, #f3163c) border-box;
 }
+
+.form-shopping-btc{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #dddddd;
+  padding: 25px;
+  border-radius: 4px;
+  width: 350px;
+  box-shadow: var(--shadow-md);
+}
+
+.form-shopping-btc > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.boton-formulario-btc{
+    border: none;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.titulo-shopping-btc{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+#operacion{
+    padding: 0px 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    font-size: 14px;
+    height: 40px;
+}
+
+.form-shopping-btc label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+} 
+
+.form-shopping-btc input{
+    padding: 0px 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    font-size: 14px;
+    height: 40px;
+}
+
+.tarjeta-saldo-btc {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  margin-bottom: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titulo-tarjeta {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.saldo-cantidad {
+  margin: 16px 0;
+}
+
+.numero-saldo {
+  font-size: 32px;
+  font-weight: 700;
+  display: block;
+  line-height: 1.2;
+}
+
+.divisa-btc {
+  margin: 8px 0;
+}
+
+.texto-btc {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.info-adicional {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usd {
+  font-weight: 600;
+}
+
+.separador {
+  opacity: 0.5;
+}
+
+.cash {
+  font-weight: 600;
+}
+
+.pagina-compra-btc{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.contenedor-historial{
+  width: 50%;
+}
+
+.card-movimiento{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    border-radius: 8px;
+    border-left-color: blueviolet;
+    border-left-width: 5px;
+}
+
+.valor-movimiento{
+  font-size: 18px;
+  font-weight: bold;
+}

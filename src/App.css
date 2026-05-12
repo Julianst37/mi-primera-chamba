@@ -72,7 +72,22 @@ header {
   position: relative;
 }
 
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
 header h1 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header-title {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-md);
   font-weight: 700;
@@ -85,6 +100,8 @@ dl {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
+  flex: 1;
+  min-width: 0;
 }
 
 dl li {
@@ -103,6 +120,27 @@ dl a {
 dl a:hover {
   background-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
+}
+
+/* Responsividad del header */
+@media (max-width: 768px) {
+  header {
+    padding: var(--spacing-md);
+  }
+
+  header nav {
+    gap: var(--spacing-sm);
+  }
+
+  dl {
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  dl a {
+    padding: var(--spacing-sm) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
 }
 
 /* ============================================
@@ -251,7 +289,8 @@ section > p {
 }
 
 #divisa,
-#valor {
+#valor,
+#divisaDestino {
   display: block;
   width: 100%;
   margin-bottom: var(--spacing-md);
@@ -265,7 +304,8 @@ section > p {
 }
 
 #divisa:focus,
-#valor:focus {
+#valor:focus,
+#divisaDestino:focus {
   outline: none;
   border-color: var(--color-secondary);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);

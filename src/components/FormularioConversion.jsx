@@ -2,17 +2,31 @@ import { useState } from 'react';
 
 function FormularioConversion() {
   const [divisa, setDivisa] = useState('Dólar');
+  const [divisaDestino, setDivisaDestino] = useState('Euro');
   const [valor, setValor] = useState('');
 
   const opciones = ['Dólar', 'Euro', 'Yen'];
+
+  // Tasas de cambio (base: Dólar USD)
+  const tasasCambio = {
+    'Dólar': 1,
+    'Euro': 0.92,
+    'Yen': 150.50
+  };
 
   const handleConvertir = () => {
     if (valor === '') {
       alert('Por favor ingresa un valor a convertir');
       return;
     }
-    console.log(`Convertir ${valor} de ${divisa}`);
-    alert(`Conversion: ${valor} ${divisa}`);
+
+    // Convertir a Dólar primero (moneda base)
+    const valorEnDolar = parseFloat(valor) / tasasCambio[divisa];
+    
+    // Convertir de Dólar a la moneda destino
+    const valorConvertido = valorEnDolar * tasasCambio[divisaDestino];
+    
+    alert(`${valor} ${divisa} = ${valorConvertido.toFixed(2)} ${divisaDestino}`);
   };
 
   return (
@@ -41,6 +55,19 @@ function FormularioConversion() {
           value={valor}
           onChange={(e) => setValor(e.target.value)}
         />
+
+        <label htmlFor="divisaDestino">Convertir a</label>
+        <select
+          id="divisaDestino"
+          value={divisaDestino}
+          onChange={(e) => setDivisaDestino(e.target.value)}
+        >
+          {opciones.map((opcion) => (
+            <option key={opcion} value={opcion}>
+              {opcion}
+            </option>
+          ))}
+        </select>
 
         <button
           id="boton-convertir"

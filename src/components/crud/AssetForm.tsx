@@ -1,14 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Asset } from '../../types/Asset';
 import { useAssets } from '../../hooks/useAssets';
 
 interface AssetFormProps {
     editingItem: Asset | null;
+    onSuccess?: (message: string) => void;
+    onError?: (message: string) => void;
 }
 
-export const AssetForm = ({ editingItem }: AssetFormProps) => {
+export const AssetForm = ({ editingItem, onSuccess, onError }: AssetFormProps) => {
     const { createAsset, updateAsset, cancelEdit, error } = useAssets();
+    const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm<Omit<Asset, 'id' | 'created_at'>>({
         defaultValues: {
             name: '',
@@ -35,11 +38,13 @@ export const AssetForm = ({ editingItem }: AssetFormProps) => {
 
     const onSubmit = async (data: Omit<Asset, 'id' | 'created_at'>) => {
         try {
+            setIsLoading(true);
             if (editingItem) {
                 await updateAsset({
                     ...editingItem,
                     ...data
                 });
+                onSuccess?.('Asset actualizado correctamente');
             } else {
                 await createAsset(data);
                 reset({
@@ -47,9 +52,13 @@ export const AssetForm = ({ editingItem }: AssetFormProps) => {
                     amount: 0,
                     file_path: null
                 });
+                onSuccess?.('Asset creado correctamente');
             }
         } catch (err) {
             console.error('Error al guardar:', err);
+            onError?.('Error al guardar el asset');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -89,14 +98,35 @@ export const AssetForm = ({ editingItem }: AssetFormProps) => {
             </div>
 
             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <button type="submit" style={{ padding: '0.5rem 1rem', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-                    {editingItem ? 'Guardar Cambios' : 'Crear Asset'}
+                <button 
+                    type="submit" 
+                    disabled={isLoading}
+                    style={{ 
+                        padding: '0.5rem 1rem', 
+                        backgroundColor: isLoading ? '#cccccc' : '#4CAF50', 
+                        color: 'white', 
+                        border: 'none', 
+                        borderRadius: '4px', 
+                        cursor: isLoading ? 'not-allowed' : 'pointer',
+                        opacity: isLoading ? 0.6 : 1
+                    }}
+                >
+                    {isLoading ? 'Cargando...' : (editingItem ? 'Guardar Cambios' : 'Crear Asset')}
                 </button>
                 {editingItem && (
                     <button
                         type="button"
                         onClick={cancelEdit}
-                        style={{ padding: '0.5rem 1rem', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                        disabled={isLoading}
+                        style={{ 
+                            padding: '0.5rem 1rem', 
+                            backgroundColor: isLoading ? '#cccccc' : '#f44336', 
+                            color: 'white', 
+                            border: 'none', 
+                            borderRadius: '4px', 
+                            cursor: isLoading ? 'not-allowed' : 'pointer',
+                            opacity: isLoading ? 0.6 : 1
+                        }}
                     >
                         Cancelar
                     </button>
